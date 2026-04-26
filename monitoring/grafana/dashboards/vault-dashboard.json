@@ -1,0 +1,598 @@
+﻿{
+  "dashboard": {
+    "id": null,
+    "title": "ðŸ¦ ETH Vault Real-Time Monitoring",
+    "tags": ["ethereum", "defi", "vault", "monitoring", "eth"],
+    "style": "dark",
+    "timezone": "browser",
+    "refresh": "5s",
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "panels": [
+      {
+        "id": 1,
+        "title": "ðŸ’° Total ETH Locked",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "vault_total_eth_locked",
+            "refId": "A",
+            "legendFormat": "Total ETH Locked"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "decimals": 4,
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "#1a1a1a",
+                  "value": null
+                },
+                {
+                  "color": "#ffffff",
+                  "value": 0.1
+                }
+              ]
+            },
+            "mappings": [],
+            "custom": {
+              "displayMode": "lcd"
+            }
+          }
+        },
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"],
+            "fields": ""
+          },
+          "orientation": "auto",
+          "textMode": "value_and_name",
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "center"
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": 2,
+        "title": "ðŸ“ˆ Current APY",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "vault_reward_multiplier / 100",
+            "refId": "A",
+            "legendFormat": "Current APY"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "decimals": 2,
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "#1a1a1a",
+                  "value": null
+                },
+                {
+                  "color": "#ffffff",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        },
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"],
+            "fields": ""
+          },
+          "orientation": "auto",
+          "textMode": "value_and_name",
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "center"
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 0
+        }
+      },
+      {
+        "id": 3,
+        "title": "ðŸ‘¥ Total Depositors",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "vault_total_depositors",
+            "refId": "A",
+            "legendFormat": "Depositors"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "decimals": 0,
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "#1a1a1a",
+                  "value": null
+                },
+                {
+                  "color": "#ffffff",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        },
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"],
+            "fields": ""
+          },
+          "orientation": "auto",
+          "textMode": "value_and_name",
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "center"
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 0
+        }
+      },
+      {
+        "id": 4,
+        "title": "âœ… Transaction Success Rate",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "vault_transaction_success_rate * 100",
+            "refId": "A",
+            "legendFormat": "Success Rate"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "decimals": 2,
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {
+                  "color": "#1a1a1a",
+                  "value": null
+                },
+                {
+                  "color": "#ffffff",
+                  "value": 90
+                }
+              ]
+            }
+          }
+        },
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"],
+            "fields": ""
+          },
+          "orientation": "auto",
+          "textMode": "value_and_name",
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "center"
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 0
+        }
+      },
+      {
+        "id": 5,
+        "title": "ðŸ“Š ETH Locked Over Time",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "vault_total_eth_locked",
+            "refId": "A",
+            "legendFormat": "Total ETH Locked"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "decimals": 4,
+            "color": {
+              "mode": "fixed",
+              "fixedColor": "#ffffff"
+            },
+            "custom": {
+              "lineWidth": 2,
+              "fillOpacity": 20,
+              "gradientMode": "none",
+              "hideFrom": {
+                "tooltip": false,
+                "viz": false,
+                "legend": false
+              }
+            }
+          }
+        },
+        "options": {
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          },
+          "legend": {
+            "displayMode": "table",
+            "placement": "bottom",
+            "calcs": ["mean", "last"]
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        }
+      },
+      {
+        "id": 6,
+        "title": "âœ… Success Rate Over Time",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "vault_transaction_success_rate * 100",
+            "refId": "A",
+            "legendFormat": "Success Rate"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "decimals": 2,
+            "min": 0,
+            "max": 100,
+            "color": {
+              "mode": "fixed",
+              "fixedColor": "#cccccc"
+            },
+            "custom": {
+              "lineWidth": 2,
+              "fillOpacity": 20,
+              "gradientMode": "none",
+              "hideFrom": {
+                "tooltip": false,
+                "viz": false,
+                "legend": false
+              }
+            }
+          }
+        },
+        "options": {
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          },
+          "legend": {
+            "displayMode": "table",
+            "placement": "bottom",
+            "calcs": ["mean", "last"]
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        }
+      },
+      {
+        "id": 7,
+        "title": "ðŸ’µ Average Deposit Size",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "vault_avg_deposit_size",
+            "refId": "A",
+            "legendFormat": "Avg Deposit Size"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "decimals": 4,
+            "color": {
+              "mode": "fixed",
+              "fixedColor": "#b0b0b0"
+            },
+            "custom": {
+              "lineWidth": 2,
+              "fillOpacity": 20,
+              "gradientMode": "none",
+              "hideFrom": {
+                "tooltip": false,
+                "viz": false,
+                "legend": false
+              }
+            }
+          }
+        },
+        "options": {
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          },
+          "legend": {
+            "displayMode": "table",
+            "placement": "bottom",
+            "calcs": ["mean", "last"]
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        }
+      },
+      {
+        "id": 8,
+        "title": "ðŸŽ Rewards Distributed",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "vault_total_rewards_distributed",
+            "refId": "A",
+            "legendFormat": "Rewards Distributed"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "decimals": 6,
+            "color": {
+              "mode": "fixed",
+              "fixedColor": "#e0e0e0"
+            },
+            "custom": {
+              "lineWidth": 2,
+              "fillOpacity": 20,
+              "gradientMode": "none",
+              "hideFrom": {
+                "tooltip": false,
+                "viz": false,
+                "legend": false
+              }
+            }
+          }
+        },
+        "options": {
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          },
+          "legend": {
+            "displayMode": "table",
+            "placement": "bottom",
+            "calcs": ["sum", "last"]
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 16
+        }
+      },
+      {
+        "id": 9,
+        "title": "âš™ï¸ Vault Utilization Rate",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "vault_utilization_rate * 100",
+            "refId": "A",
+            "legendFormat": "Utilization"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "decimals": 2,
+            "min": 0,
+            "max": 100,
+            "color": {
+              "mode": "fixed",
+              "fixedColor": "#9a9a9a"
+            },
+            "custom": {
+              "lineWidth": 2,
+              "fillOpacity": 20,
+              "gradientMode": "none",
+              "hideFrom": {
+                "tooltip": false,
+                "viz": false,
+                "legend": false
+              }
+            }
+          }
+        },
+        "options": {
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          },
+          "legend": {
+            "displayMode": "table",
+            "placement": "bottom",
+            "calcs": ["mean", "last"]
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 24
+        }
+      },
+      {
+        "id": 10,
+        "title": "ðŸ“ Transactions (5m rate)",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "increase(vault_transactions_total[5m])",
+            "refId": "A",
+            "legendFormat": "{{type}}-{{status}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "decimals": 0,
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "lineWidth": 2,
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "tooltip": false,
+                "viz": false,
+                "legend": false
+              }
+            }
+          }
+        },
+        "options": {
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          },
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom",
+            "calcs": ["sum"]
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 24
+        }
+      },
+      {
+        "id": 11,
+        "title": "ðŸ–¥ï¸ System & Network Status",
+        "type": "table",
+        "targets": [
+          {
+            "expr": "vault_total_eth_locked",
+            "format": "table",
+            "instant": true,
+            "refId": "A",
+            "legendFormat": "Total ETH Locked"
+          },
+          {
+            "expr": "vault_total_depositors",
+            "format": "table",
+            "instant": true,
+            "refId": "B",
+            "legendFormat": "Total Depositors"
+          },
+          {
+            "expr": "vault_reward_multiplier / 100",
+            "format": "table",
+            "instant": true,
+            "refId": "C",
+            "legendFormat": "Current APY (%)"
+          },
+          {
+            "expr": "ethereum_block_number",
+            "format": "table",
+            "instant": true,
+            "refId": "D",
+            "legendFormat": "Current Block"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "displayMode": "auto"
+            }
+          }
+        },
+        "options": {
+          "showHeader": true
+        },
+        "gridPos": {
+          "h": 6,
+          "w": 24,
+          "x": 0,
+          "y": 32
+        }
+      }
+    ],
+    "schemaVersion": 38,
+    "version": 1,
+    "links": [
+      {
+        "title": "Vault Contract on Etherscan",
+        "url": "https://sepolia.etherscan.io/address/0xEAebE827C8A3A4E98dFA802FC719eeBe46f06276",
+        "type": "link",
+        "icon": "external link"
+      },
+      {
+        "title": "Frontend Dashboard",
+        "url": "http://localhost:3001",
+        "type": "link",
+        "icon": "dashboard"
+      },
+      {
+        "title": "Prometheus",
+        "url": "http://localhost:9090",
+        "type": "link",
+        "icon": "cloud"
+      }
+    ]
+  }
+}
