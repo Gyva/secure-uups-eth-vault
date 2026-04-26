@@ -21,4 +21,4 @@ RUN echo '#!/bin/sh' > deploy.sh && \
     chmod +x deploy.sh
 
 # Run deployment
-CMD ["./deploy.sh"]
+CMD ["sh", "./deploy.sh"]

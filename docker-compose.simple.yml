@@ -14,10 +14,10 @@ services:
     networks:
       - vault-network
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8545 || exit 1"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+      test: ["CMD-SHELL", "curl -s -X POST -H \"Content-Type: application/json\" --data '{\"jsonrpc\":\"2.0\",\"method\":\"eth_blockNumber\",\"params\":[],\"id\":1}' http://localhost:8545 | grep -q \"result\" || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
       start_period: 40s
 
   # Custom metrics exporter for blockchain data
@@ -26,7 +26,7 @@ services:
       context: ./monitoring/exporter
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8081:8080"
     environment:
       - RPC_URL=http://hardhat-node:8545
       - VAULT_ADDRESS=0x8A791620dd6260079BF849Dc5567aDC3F2FdC318
