@@ -10,24 +10,40 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0d0d0d;
-  color: #fff;
+}
+
+:root {
+  --bg-0: #071122;
+  --bg-1: #0f1724;
+  --card: rgba(255,255,255,0.04);
+  --muted: #9aa4b2;
+  --accent: #7dd3fc;
+  --glass: rgba(255,255,255,0.03);
+  --text: #e6eef6;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%);
+  color: var(--text);
 }
 
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #0d0d0d;
+  background: transparent;
 }
 
 .App-header {
-  background: #1a1a1a;
-  border-bottom: 1px solid #333;
-  padding: 1rem 2rem;
+  background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  padding: 0.75rem 1.5rem;
   position: sticky;
-  top: 0;
-  z-index: 100;
+  top: 72px;
+  z-index: 105;
 }
 
 .header-content {
@@ -51,7 +67,7 @@ body {
 }
 
 .main-content.with-sidebar {
-  margin-left: 280px;
+  margin-top: 72px;
 }
 
 .connect-prompt {
